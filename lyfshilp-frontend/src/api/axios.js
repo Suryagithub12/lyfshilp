@@ -2,16 +2,14 @@ import axios from "axios";
 
 // Base URL for local development vs production
 // Uses VITE_API_URL if set, otherwise switches based on environment mode
-// const isProd = import.meta.env.PROD;
+const isProd = import.meta.env.PROD;
+
 const api = axios.create({
-  baseURL: `${import.meta.env.VITE_BASE_URL}/api`,
+  baseURL: "https://lyfshilp-backend.onrender.com/api",
+  // baseURL: "https://lyfshilp-backend-210425516679.asia-south1.run.app/api", // Production backend URL from Google Cloud Run
   withCredentials: true,
 });
 
-// const api = axios.create({
-//   baseURL: "https://lyfshilp-backend-210425516679.asia-south1.run.app/api", // Production backend URL from Google Cloud Run
-//   withCredentials: true,
-// });
 
 // Add JWT token to all requests automatically
 api.interceptors.request.use((config) => {
